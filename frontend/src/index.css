@@ -1,0 +1,134 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Montserrat:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --radius: 0.25rem;
+
+    /* ETCHLY Luxury Palette */
+    --background: 0.985 0.003 90;
+    --foreground: 0.13 0.01 60;
+    --card: 0.98 0.003 90;
+    --card-foreground: 0.13 0.01 60;
+    --popover: 0.99 0.002 90;
+    --popover-foreground: 0.13 0.01 60;
+    --primary: 0.72 0.12 75;
+    --primary-foreground: 0.99 0.002 90;
+    --secondary: 0.96 0.005 80;
+    --secondary-foreground: 0.13 0.01 60;
+    --muted: 0.94 0.005 80;
+    --muted-foreground: 0.5 0.01 60;
+    --accent: 0.72 0.12 75;
+    --accent-foreground: 0.99 0.002 90;
+    --destructive: 0.577 0.245 27.325;
+    --destructive-foreground: 0.985 0 0;
+    --border: 0.88 0.01 80;
+    --input: 0.88 0.01 80;
+    --ring: 0.72 0.12 75;
+    --chart-1: 0.72 0.12 75;
+    --chart-2: 0.6 0.118 184.704;
+    --chart-3: 0.398 0.07 227.392;
+    --chart-4: 0.828 0.189 84.429;
+    --chart-5: 0.769 0.188 70.08;
+    --sidebar: 0.985 0.003 90;
+    --sidebar-foreground: 0.13 0.01 60;
+    --sidebar-primary: 0.72 0.12 75;
+    --sidebar-primary-foreground: 0.99 0.002 90;
+    --sidebar-accent: 0.96 0.005 80;
+    --sidebar-accent-foreground: 0.13 0.01 60;
+    --sidebar-border: 0.88 0.01 80;
+    --sidebar-ring: 0.72 0.12 75;
+  }
+
+  .dark {
+    --background: 0.12 0.01 60;
+    --foreground: 0.96 0.005 80;
+    --card: 0.16 0.01 60;
+    --card-foreground: 0.96 0.005 80;
+    --popover: 0.18 0.01 60;
+    --popover-foreground: 0.96 0.005 80;
+    --primary: 0.72 0.12 75;
+    --primary-foreground: 0.12 0.01 60;
+    --secondary: 0.22 0.01 60;
+    --secondary-foreground: 0.96 0.005 80;
+    --muted: 0.22 0.01 60;
+    --muted-foreground: 0.65 0.01 60;
+    --accent: 0.72 0.12 75;
+    --accent-foreground: 0.12 0.01 60;
+    --destructive: 0.704 0.191 22.216;
+    --destructive-foreground: 0.985 0 0;
+    --border: 1 0 0 / 10%;
+    --input: 1 0 0 / 15%;
+    --ring: 0.72 0.12 75;
+    --sidebar: 0.16 0.01 60;
+    --sidebar-foreground: 0.96 0.005 80;
+    --sidebar-primary: 0.72 0.12 75;
+    --sidebar-primary-foreground: 0.12 0.01 60;
+    --sidebar-accent: 0.22 0.01 60;
+    --sidebar-accent-foreground: 0.96 0.005 80;
+    --sidebar-border: 1 0 0 / 10%;
+    --sidebar-ring: 0.72 0.12 75;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Montserrat', sans-serif;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: 'Cormorant Garamond', serif;
+  }
+
+  button, label, nav, .font-montserrat {
+    font-family: 'Montserrat', sans-serif;
+  }
+}
+
+@layer utilities {
+  .font-cormorant {
+    font-family: 'Cormorant Garamond', serif;
+  }
+  .font-montserrat {
+    font-family: 'Montserrat', sans-serif;
+  }
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  }
+  .reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .zoom-container {
+    overflow: hidden;
+  }
+  .zoom-image {
+    transition: transform 0.5s ease-out;
+    cursor: zoom-in;
+  }
+  .zoom-image:hover {
+    transform: scale(1.5);
+  }
+  .page-fade-enter {
+    opacity: 0;
+  }
+  .page-fade-enter-active {
+    opacity: 1;
+    transition: opacity 300ms ease-in;
+  }
+  .page-fade-exit {
+    opacity: 1;
+  }
+  .page-fade-exit-active {
+    opacity: 0;
+    transition: opacity 300ms ease-out;
+  }
+}

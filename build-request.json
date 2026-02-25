@@ -1,0 +1,258 @@
+{
+  "kind": "build_request",
+  "title": "ETCHLY — Luxury Laser-Etched Jewelry Storefront (Full Build)",
+  "projectName": "Etchly",
+  "priority": "normal",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "text": "Apply a luxury white/gold visual theme across the entire app: off-white (#FAFAF8) backgrounds, gold (#C9A84C) accents, deep charcoal (#1A1A1A) text. Load Cormorant Garamond (Google Fonts) for all headings and Montserrat for all UI labels, buttons, and body text. Apply these fonts and the color palette consistently across every page and component.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "Interface Style: Modern Minimalist Gallery (Luxury White/Gold Aesthetic)",
+          "Typography: Headlines in Cormorant Garamond; UI/Buttons in Montserrat"
+        ]
+      },
+      "acceptanceCriteria": [
+        "All h1–h4 elements render in Cormorant Garamond",
+        "All buttons, labels, and nav items render in Montserrat",
+        "Background is off-white; interactive highlights and borders use gold",
+        "No blue or purple tones appear anywhere in the UI"
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "text": "Implement a scroll-reveal fade-in-up animation: as the user scrolls, product cards and section blocks transition from opacity 0 + translateY(30px) to opacity 1 + translateY(0) over 0.8s ease-out. Also apply a subtle parallax effect on hero/background images so they scroll at ~70% of the foreground scroll speed. Page-level route transitions should fade to white and back in.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "Fade-In-Up: Products should gently float into view as the user scrolls",
+          "Smooth Parallax: The background images should move slightly slower than the scroll",
+          "Custom Transition: Page transitions should be a seamless 'fade-to-white'"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Elements outside the viewport start invisible and animate into view on scroll",
+        "Background image moves at a visibly slower rate than foreground content",
+        "Navigating between pages fades the current page to white then fades in the new page"
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "text": "Add hover-magnify and click-to-zoom on all product images. On hover, the image scales to 1.5× within its container (overflow hidden). On click, open a fullscreen lightbox showing the full-resolution image with close button.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "Every product image must feature a 'Magnify on Hover' and 'Click-to-Zoom' function"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Hovering any product image triggers a smooth 1.5× scale transition",
+        "Clicking a product image opens a fullscreen lightbox modal",
+        "Lightbox has a visible close control and is dismissible via Escape key"
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "text": "Build the Homepage with four sections: (1) A full-viewport video hero with an autoplay looping background video (use a placeholder video element), a bold headline 'ETCHLY' in Cormorant Garamond, and a gold CTA button 'Explore Collection'. (2) A 'How It Works' section with three animated steps: Upload Photo → Laser Etching → Delivered. Each step fades in sequentially. (3) A 'Trending Collections' staggered grid showing mock product cards that animate in with a staggered delay. (4) A minimal footer with grayscale trust icons for VISA, Mastercard, Amex, Discover, JCB, Diners Club, Apple Pay, Google Pay, PayPal, Klarna, and Afterpay.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "Homepage: High-end video hero, 'How it Works' animation, and a 'Trending Collections' staggered grid",
+          "Display all card logos in a grayscale, minimalist footer for trust"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Hero section occupies 100vh with looping background video and visible headline + CTA",
+        "How It Works section shows 3 steps with staggered scroll-reveal animation",
+        "Trending Collections grid shows at least 4 product cards with staggered fade-in-up",
+        "Footer displays grayscale payment method icons for all 11 specified methods"
+      ]
+    },
+    {
+      "id": "REQ-5",
+      "text": "Build the Product Detail Page (PDP) as a split-layout 'Customization Studio'. Left panel: zoom-enabled image gallery with thumbnail strip. Right panel: (A) Material Hub — four material buttons (18K Gold, Rose Gold, 925 Silver, Platinum) that instantly swap the displayed product image and update the displayed price when selected. (B) Photo Lab — an 'Upload Photo' button that opens a minimalist modal with a file input and a simulated face-detection crop preview (center the uploaded image in a circular crop frame). (C) Live Engraving Preview — a text input labeled 'Engrave a message'; as the user types, the text renders in a cursive jewelry-style font on a 3D-rendered disc/pendant (use React Three Fiber for the 3D render with the typed text projected as a texture). Include a sticky 'Add to Bag' bar fixed at the bottom of the viewport.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "split-layout 'Customization Studio'",
+          "Material Hub",
+          "Photo Lab",
+          "Live Engraving Preview",
+          "sticky 'Add to Bag' bar"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Material selection buttons update the product image and price in the same render cycle",
+        "Upload Photo modal opens, accepts an image file, and shows a circular crop preview",
+        "Typing in the engraving field updates the text visible on the 3D pendant in real time",
+        "Sticky Add to Bag bar remains visible while scrolling the PDP",
+        "Product images support hover-magnify and click-to-zoom (per REQ-3)"
+      ]
+    },
+    {
+      "id": "REQ-6",
+      "text": "Build the Catalog page: a clean, borderless grid of all ETCHLY product cards. Each card shows product image, name, and price. On hover, the card image swaps to an alternate angle image (use two distinct mock images per card). Apply scroll-reveal fade-in-up with staggered delays.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "The Catalog: A clean, borderless list of all ETCHLY pieces with hover-state image swaps"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Product cards have no visible border",
+        "Hovering a card smoothly swaps to an alternate product image",
+        "Cards animate in with staggered scroll-reveal"
+      ]
+    },
+    {
+      "id": "REQ-7",
+      "text": "Build the Artisan Story (About) page describing 'The Etchly Method'. Include: a hero banner with the headline 'Crafted by Light. Perfected by Hand.', three content sections covering (1) 2026 laser etching technology, (2) traditional hand-polishing process, and (3) a quality guarantee. Use large typographic pull-quotes in Cormorant Garamond and supporting body text in Montserrat. Apply scroll-reveal animations.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "The Artisan Story (About): Describing the 'Etchly Method'—combining 2026 laser tech with traditional polishing"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Page has a hero section with the specified headline",
+        "Three content sections with headings and body text are present",
+        "Cormorant Garamond pull-quotes are visually prominent",
+        "Sections animate in on scroll"
+      ]
+    },
+    {
+      "id": "REQ-8",
+      "text": "Build the Order Concierge (tracking) page: a user portal where visitors can enter an order number to see its status. Display a visual three-stage progress tracker: 'Designing → Etching → Shipped' with the active stage highlighted in gold. Persist mock order data in the backend so querying by order number returns a stage value.",
+      "target": "both",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "Order Concierge (Support/Tracking): A user portal to track the 'Designing > Etching > Shipped' status"
+        ]
+      },
+      "acceptanceCriteria": [
+        "User can enter an order number and submit",
+        "A three-stage visual tracker renders with the current stage highlighted in gold",
+        "Backend stores and returns order status by ID",
+        "All three status states ('Designing', 'Etching', 'Shipped') are reachable via different mock order IDs"
+      ]
+    },
+    {
+      "id": "REQ-9",
+      "text": "Implement the backend data model in the Motoko actor to support: (1) A Product type with fields: id, name, materials (array of material options each with label, priceUSD, imageKey), and description. Pre-populate with at least 4 ETCHLY products. (2) An Order type with fields: id, status (variant: #Designing | #Etching | #Shipped), createdAt. Pre-populate with 3 mock orders at different stages. Expose query functions: getProducts() and getOrderStatus(orderId: Text).",
+      "target": "backend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "Material Hub: Users select from 18K Gold, Rose Gold, 925 Silver, or Platinum. The image and price must update instantly",
+          "Order Concierge (Support/Tracking)"
+        ]
+      },
+      "acceptanceCriteria": [
+        "getProducts() returns all pre-populated products with material variants and prices",
+        "getOrderStatus() returns the correct status variant for a valid order ID",
+        "getOrderStatus() returns an error/null for an unknown order ID",
+        "Backend compiles without errors"
+      ]
+    },
+    {
+      "id": "REQ-10",
+      "text": "Add a '24-Hour Customization Rule' modal that appears when the user clicks 'Add to Bag' on the PDP. The modal must display the message: 'I understand that ETCHLY begins production 24 hours after my order and that customized items cannot be returned.' with a gold-styled 'I Agree & Continue' button and a plain 'Cancel' link. The item is only added to the cart state after the user clicks 'I Agree & Continue'.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "The '24-Hour Customization Rule': Mandatory pop-up at checkout: 'I understand that ETCHLY begins production 24 hours after my order and that customized items cannot be returned.'"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Clicking Add to Bag opens the confirmation modal before adding to cart",
+        "Modal text matches the specified copy exactly",
+        "Clicking 'I Agree & Continue' closes the modal and adds the item to cart state",
+        "Clicking 'Cancel' closes the modal without adding to cart"
+      ]
+    },
+    {
+      "id": "REQ-11",
+      "text": "Build a persistent mini cart/bag sidebar that slides in from the right when items are added. Show item name, selected material, engraved text (if any), and price. Include a checkout summary section listing the subtotal and a row of grayscale payment method icons (same set as footer). Include a 'Proceed to Checkout' gold button.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "sticky 'Add to Bag' bar",
+          "Enable a single-page checkout that accepts All Global Payment Methods",
+          "Display all card logos in a grayscale, minimalist footer for trust"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Cart sidebar slides in from the right with a smooth animation",
+        "Cart entries show product name, material, engraving text, and price",
+        "Grayscale payment icons are visible in the cart",
+        "Subtotal is calculated and displayed correctly"
+      ]
+    }
+  ],
+  "constraints": [
+    "No Shopify-specific liquid/theme code — implement as a React + Motoko ICP application",
+    "No external payment processor integrations (Stripe UI elements may be used as visual placeholders only)",
+    "No real AI face-detection — simulate with a centered circular crop preview",
+    "No real video file — use a placeholder video element with a dark gradient fallback",
+    "Do not edit any file listed in frontend.immutablePaths"
+  ],
+  "nonGoals": [
+    "Actual Shopify deployment or Prestige theme integration",
+    "Real Klarna, Afterpay, Apple Pay, or Google Pay SDK integration",
+    "Zepto, Judge.me, or Klaviyo third-party app integration",
+    "Real AI/ML face detection",
+    "Email sending or SMS notifications",
+    "User authentication or account management"
+  ],
+  "imageRequirements": {
+    "required": [
+      "Luxury laser-etched gold medallion pendant on white background, top-down flat-lay studio shot (product-gold-medallion.dim_800x800.png)",
+      "Luxury laser-etched rose gold pendant on white background, top-down flat-lay studio shot (product-rose-gold-pendant.dim_800x800.png)",
+      "Luxury 925 silver engraved disc necklace on white background, top-down flat-lay studio shot (product-silver-disc.dim_800x800.png)",
+      "Luxury platinum personalized medallion on white background, top-down flat-lay studio shot (product-platinum-medallion.dim_800x800.png)",
+      "Alternate angle: gold medallion pendant held between fingers against soft light background (product-gold-medallion-alt.dim_800x800.png)",
+      "Alternate angle: rose gold pendant displayed on black velvet tray (product-rose-gold-pendant-alt.dim_800x800.png)",
+      "Alternate angle: silver disc necklace on marble surface with bokeh background (product-silver-disc-alt.dim_800x800.png)",
+      "Alternate angle: platinum medallion resting on white silk fabric (product-platinum-medallion-alt.dim_800x800.png)",
+      "Full-width cinematic banner: abstract golden light bokeh trails on white background, horizontal orientation (hero-banner.dim_1920x1080.png)",
+      "Artisan hands polishing a gold medallion under soft studio lighting, warm tones (artisan-story-hero.dim_1600x900.png)",
+      "Close-up macro shot of laser engraving lines on gold metal surface, extreme detail (laser-detail-texture.dim_800x600.png)",
+      "Minimal wordmark logo: the word ETCHLY in thin serif capitals with a fine gold underline, on transparent background (etchly-logo.dim_400x120.png)"
+    ],
+    "edits": []
+  }
+}

@@ -1,0 +1,305 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "ETCHLY — Luxury Laser-Etched Jewelry Storefront (Frontend Implementation)",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "summary": "Apply luxury white/gold visual theme with Cormorant Garamond and Montserrat typography across the entire app",
+      "acceptanceCriteria": [
+        "All h1–h4 elements render in Cormorant Garamond",
+        "All buttons, labels, and nav items render in Montserrat",
+        "Background is off-white; interactive highlights and borders use gold",
+        "No blue or purple tones appear anywhere in the UI"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/index.css",
+          "operation": "modify",
+          "description": "Import Cormorant Garamond and Montserrat from Google Fonts. Define CSS custom properties for the luxury color palette: --color-background (#FAFAF8), --color-gold (#C9A84C), --color-charcoal (#1A1A1A). Apply font-family: 'Cormorant Garamond' to all heading elements (h1-h4) and font-family: 'Montserrat' to body, button, label, and nav elements. Set background color to var(--color-background) globally."
+        },
+        {
+          "path": "frontend/tailwind.config.js",
+          "operation": "modify",
+          "description": "Extend the theme to include custom colors (etchlyWhite: '#FAFAF8', etchlyGold: '#C9A84C', etchlyCharcoal: '#1A1A1A') and font families (cormorant: ['Cormorant Garamond', 'serif'], montserrat: ['Montserrat', 'sans-serif']). This enables using these values via Tailwind utility classes throughout the app."
+        }
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "summary": "Implement scroll-reveal fade-in-up animation, subtle parallax effect on hero/background images, and page-level fade-to-white route transitions",
+      "acceptanceCriteria": [
+        "Elements outside the viewport start invisible and animate into view on scroll",
+        "Background image moves at a visibly slower rate than foreground content",
+        "Navigating between pages fades the current page to white then fades in the new page"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/hooks/useScrollReveal.ts",
+          "operation": "create",
+          "description": "Create a custom React hook that uses IntersectionObserver to detect when elements enter the viewport. Return a ref and an isVisible boolean. When isVisible becomes true, apply CSS transition from opacity 0 + translateY(30px) to opacity 1 + translateY(0) over 0.8s ease-out."
+        },
+        {
+          "path": "frontend/src/hooks/useParallax.ts",
+          "operation": "create",
+          "description": "Create a custom React hook that listens to window scroll events and returns a transform style object. Calculate translateY offset based on scrollY * 0.3 to achieve ~70% scroll speed for background images."
+        },
+        {
+          "path": "frontend/src/components/PageTransition.tsx",
+          "operation": "create",
+          "description": "Create a wrapper component that wraps page content and applies fade-to-white transition animations using React Transition Group or Framer Motion. On exit, fade to white background; on enter, fade in from white. Duration ~300ms for smooth navigation feel."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Wrap all route components with the PageTransition component to enable fade-to-white route transitions across the entire app."
+        }
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "summary": "Add hover-magnify and click-to-zoom on all product images with fullscreen lightbox",
+      "acceptanceCriteria": [
+        "Hovering any product image triggers a smooth 1.5× scale transition",
+        "Clicking a product image opens a fullscreen lightbox modal",
+        "Lightbox has a visible close control and is dismissible via Escape key"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/ZoomableImage.tsx",
+          "operation": "create",
+          "description": "Create a reusable component that renders an image with hover scale effect (transform: scale(1.5)) applied within overflow: hidden container. On click, trigger opening of lightbox modal. Support both primary and alternate image props."
+        },
+        {
+          "path": "frontend/src/components/ImageLightbox.tsx",
+          "operation": "create",
+          "description": "Create a fullscreen modal component that displays a full-resolution image with a close button (X icon in top-right corner). Implement Escape key listener to close. Apply backdrop blur and dark overlay for focus. Center the image with max-width/max-height constraints."
+        },
+        {
+          "path": "frontend/src/hooks/useLightbox.ts",
+          "operation": "create",
+          "description": "Create a custom hook to manage lightbox state (isOpen, imageSrc). Return open, close, and toggle functions. Handle Escape key listener lifecycle within this hook."
+        }
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "summary": "Build the Homepage with video hero, How It Works animation, Trending Collections grid, and payment method footer",
+      "acceptanceCriteria": [
+        "Hero section occupies 100vh with looping background video and visible headline + CTA",
+        "How It Works section shows 3 steps with staggered scroll-reveal animation",
+        "Trending Collections grid shows at least 4 product cards with staggered fade-in-up",
+        "Footer displays grayscale payment method icons for all 11 specified methods"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/HomePage.tsx",
+          "operation": "create",
+          "description": "Create the main landing page component that composes VideoHero, HowItWorks, TrendingCollections, and Footer sections. Use the generated image frontend/public/assets/generated/hero-banner.dim_1920x1080.png as a fallback background for the hero section. Apply the PageTransition wrapper and wire scroll-reveal hooks to animate sections on scroll."
+        },
+        {
+          "path": "frontend/src/components/VideoHero.tsx",
+          "operation": "create",
+          "description": "Create a full-viewport (100vh) hero section with a placeholder HTML5 video element set to autoplay, loop, and muted. Overlay a centered headline 'ETCHLY' in Cormorant Garamond (font-cormorant, text-6xl or larger) and a gold CTA button 'Explore Collection' that links to the catalog page. Use frontend/public/assets/generated/hero-banner.dim_1920x1080.png as video poster/fallback."
+        },
+        {
+          "path": "frontend/src/components/HowItWorks.tsx",
+          "operation": "create",
+          "description": "Create a section with three sequential steps: 'Upload Photo', 'Laser Etching', 'Delivered'. Each step is a card/block with an icon or number, heading, and short description. Use the useScrollReveal hook with staggered delays (0ms, 200ms, 400ms) to animate each step into view as the user scrolls."
+        },
+        {
+          "path": "frontend/src/components/TrendingCollections.tsx",
+          "operation": "create",
+          "description": "Create a grid layout (CSS Grid or Flexbox) displaying at least 4 ProductCard components. Fetch initial product data from backend getProducts(). Apply useScrollReveal hook to each card with staggered delays (increments of 100ms) for fade-in-up animation. Use the generated product images: frontend/public/assets/generated/product-gold-medallion.dim_800x800.png, frontend/public/assets/generated/product-rose-gold-pendant.dim_800x800.png, frontend/public/assets/generated/product-silver-disc.dim_800x800.png, frontend/public/assets/generated/product-platinum-medallion.dim_800x800.png."
+        },
+        {
+          "path": "frontend/src/components/Footer.tsx",
+          "operation": "create",
+          "description": "Create a minimal footer component displaying grayscale icons/logos for the 11 specified payment methods: VISA, Mastercard, Amex, Discover, JCB, Diners Club, Apple Pay, Google Pay, PayPal, Klarna, Afterpay. Use SVG icons or placeholder images with grayscale filter applied. Arrange in a centered horizontal row with consistent spacing."
+        },
+        {
+          "path": "frontend/src/components/ProductCard.tsx",
+          "operation": "create",
+          "description": "Create a reusable product card component that displays product image, name, and price. Integrate the ZoomableImage component for hover-magnify and click-to-zoom. Support hover image swap by accepting both primary and alternate image props. On click (outside image), navigate to the product detail page. Apply borderless styling per catalog requirements."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Register a route for the HomePage component at path '/'. Ensure HomePage is wrapped with PageTransition for fade-to-white navigation. Import and render the Footer component globally at the bottom of the app layout so it appears on all pages."
+        }
+      ]
+    },
+    {
+      "id": "REQ-5",
+      "summary": "Build the Product Detail Page with split-layout Customization Studio: zoom-enabled gallery, Material Hub, Photo Lab, Live Engraving Preview, and sticky Add to Bag bar",
+      "acceptanceCriteria": [
+        "Material selection buttons update the product image and price in the same render cycle",
+        "Upload Photo modal opens, accepts an image file, and shows a circular crop preview",
+        "Typing in the engraving field updates the text visible on the 3D pendant in real time",
+        "Sticky Add to Bag bar remains visible while scrolling the PDP",
+        "Product images support hover-magnify and click-to-zoom (per REQ-3)"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/ProductDetailPage.tsx",
+          "operation": "create",
+          "description": "Create the PDP with a two-column split layout. Left: ProductImageGallery. Right: MaterialHub, PhotoLab, EngravingPreview components stacked vertically. At the bottom, render the StickyAddToBagBar component fixed to the viewport bottom. Fetch product data by ID from backend getProductById(). Manage local state for selected material, uploaded photo, and engraving text. Use generated product images as the default gallery images."
+        },
+        {
+          "path": "frontend/src/components/ProductImageGallery.tsx",
+          "operation": "create",
+          "description": "Create a gallery component with a large main image display using ZoomableImage for hover-magnify and click-to-zoom. Below the main image, render a horizontal thumbnail strip. Clicking a thumbnail updates the main image. Dynamically load images based on selected material from parent state. Use generated product images: frontend/public/assets/generated/product-gold-medallion.dim_800x800.png, frontend/public/assets/generated/product-rose-gold-pendant.dim_800x800.png, frontend/public/assets/generated/product-silver-disc.dim_800x800.png, frontend/public/assets/generated/product-platinum-medallion.dim_800x800.png and their respective -alt variants."
+        },
+        {
+          "path": "frontend/src/components/MaterialHub.tsx",
+          "operation": "create",
+          "description": "Create a component with four material selection buttons: 18K Gold, Rose Gold, 925 Silver, Platinum. Each button is styled with gold accent when selected. On click, update parent component state with the selected material. This triggers immediate updates to the displayed product image (via ProductImageGallery) and price (via Material data from backend). Display the current price based on the selected material's priceUSD field."
+        },
+        {
+          "path": "frontend/src/components/PhotoLab.tsx",
+          "operation": "create",
+          "description": "Create a component with an 'Upload Photo' button. On click, open the PhotoUploadModal component. After upload, display a thumbnail of the uploaded image with a circular crop overlay preview. The circular crop frame simulates face detection by centering the image. Store uploaded image in local state (pass to parent via callback)."
+        },
+        {
+          "path": "frontend/src/components/PhotoUploadModal.tsx",
+          "operation": "create",
+          "description": "Create a minimalist modal with a file input (accept image/*). When an image is selected, display it within a circular crop frame centered in the modal. Include 'Confirm' and 'Cancel' buttons. On confirm, pass the selected image back to parent via callback and close the modal. Use basic CSS to simulate the circular crop overlay."
+        },
+        {
+          "path": "frontend/src/components/EngravingPreview.tsx",
+          "operation": "create",
+          "description": "Create a component with a text input labeled 'Engrave a message' (Montserrat font). Below the input, render a 3D pendant scene using React Three Fiber (@react-three/fiber, @react-three/drei). Create a simple 3D disc/cylinder geometry. As the user types, apply the input text as a texture or use drei's Text3D component to render the text in a cursive jewelry-style font (e.g., 'Great Vibes' or 'Allura' from Google Fonts) directly on the 3D object surface. Update the 3D scene in real time on every keystroke."
+        },
+        {
+          "path": "frontend/src/components/StickyAddToBagBar.tsx",
+          "operation": "create",
+          "description": "Create a fixed-position bar (position: fixed; bottom: 0; width: 100%; z-index: 50) with a gold-styled 'Add to Bag' button. Display the selected material name, engraving text preview (first 20 chars), and total price. On button click, trigger the CustomizationRuleModal (REQ-10) before adding to cart."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Register a route for ProductDetailPage at path '/product/:id'. Wrap with PageTransition component. Ensure the route is linked from ProductCard components and the HomePage CTA."
+        }
+      ]
+    },
+    {
+      "id": "REQ-6",
+      "summary": "Build the Catalog page with borderless product card grid, hover image swap, and scroll-reveal animation",
+      "acceptanceCriteria": [
+        "Product cards have no visible border",
+        "Hovering a card smoothly swaps to an alternate product image",
+        "Cards animate in with staggered scroll-reveal"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/CatalogPage.tsx",
+          "operation": "create",
+          "description": "Create a clean grid layout (CSS Grid with gap, 3-4 columns responsive). Fetch all products from backend getProducts(). Map products to ProductCard components, passing both primary and alternate image URLs. Apply useScrollReveal hook to each card with staggered delays (increments of 80ms). Use generated product images as primary images and the -alt variants as alternate images: frontend/public/assets/generated/product-gold-medallion.dim_800x800.png + frontend/public/assets/generated/product-gold-medallion-alt.dim_800x800.png, and similarly for rose-gold, silver, platinum products."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Register a route for CatalogPage at path '/catalog'. Wrap with PageTransition. Link from the VideoHero 'Explore Collection' button on the HomePage."
+        }
+      ]
+    },
+    {
+      "id": "REQ-7",
+      "summary": "Build the Artisan Story (About) page describing The Etchly Method with hero banner, three content sections, pull-quotes, and scroll-reveal animations",
+      "acceptanceCriteria": [
+        "Page has a hero section with the specified headline",
+        "Three content sections with headings and body text are present",
+        "Cormorant Garamond pull-quotes are visually prominent",
+        "Sections animate in on scroll"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/ArtisanStoryPage.tsx",
+          "operation": "create",
+          "description": "Create the About page with a hero banner section displaying the headline 'Crafted by Light. Perfected by Hand.' in large Cormorant Garamond font. Use the generated image frontend/public/assets/generated/artisan-story-hero.dim_1600x900.png as the hero background with parallax effect (useParallax hook). Below, render three content sections: (1) 2026 laser etching technology, (2) traditional hand-polishing process, (3) quality guarantee. Each section includes a heading (Cormorant Garamond), body text (Montserrat), and a large pull-quote (Cormorant Garamond, styled prominently with larger font size and gold accent). Apply useScrollReveal hook to each section for fade-in-up animation."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Register a route for ArtisanStoryPage at path '/about'. Wrap with PageTransition. Add a navigation link in the header/footer for 'Our Story' or 'About' that routes to this page."
+        }
+      ]
+    },
+    {
+      "id": "REQ-8",
+      "summary": "Build the Order Concierge (tracking) page with order number input and three-stage visual progress tracker",
+      "acceptanceCriteria": [
+        "User can enter an order number and submit",
+        "A three-stage visual tracker renders with the current stage highlighted in gold",
+        "Backend stores and returns order status by ID",
+        "All three status states ('Designing', 'Etching', 'Shipped') are reachable via different mock order IDs"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/OrderConciergePage.tsx",
+          "operation": "create",
+          "description": "Create a page with a heading 'Track Your Order', a text input for order number, and a 'Track' button. On button click, call backend getOrderStatus(orderId). If successful, render the OrderStatusTracker component with the returned status. Display error message if order not found."
+        },
+        {
+          "path": "frontend/src/components/OrderStatusTracker.tsx",
+          "operation": "create",
+          "description": "Create a visual three-stage progress tracker component. Render three steps: 'Designing', 'Etching', 'Shipped'. Accept an OrderStatus prop from backend (OrderStatus enum). Highlight the active stage with gold background/border. Previous stages show checkmarks; future stages are grayed out. Use horizontal step layout with connecting lines between stages."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Register a route for OrderConciergePage at path '/track'. Wrap with PageTransition. Add a navigation link in the header or footer labeled 'Track Order' that routes to this page."
+        }
+      ]
+    },
+    {
+      "id": "REQ-10",
+      "summary": "Add 24-Hour Customization Rule modal that appears when user clicks Add to Bag, requiring agreement before adding to cart",
+      "acceptanceCriteria": [
+        "Clicking Add to Bag opens the confirmation modal before adding to cart",
+        "Modal text matches the specified copy exactly",
+        "Clicking 'I Agree & Continue' closes the modal and adds the item to cart state",
+        "Clicking 'Cancel' closes the modal without adding to cart"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/CustomizationRuleModal.tsx",
+          "operation": "create",
+          "description": "Create a modal component that displays the exact message: 'I understand that ETCHLY begins production 24 hours after my order and that customized items cannot be returned.' Include a gold-styled button 'I Agree & Continue' and a plain text 'Cancel' link. Accept onAgree and onCancel callback props. On 'I Agree & Continue', call onAgree callback (which adds item to cart state) and close modal. On 'Cancel', call onCancel and close modal without adding to cart."
+        },
+        {
+          "path": "frontend/src/components/StickyAddToBagBar.tsx",
+          "operation": "modify",
+          "description": "Update the Add to Bag button click handler to first open the CustomizationRuleModal. Only after the user clicks 'I Agree & Continue' in the modal, proceed to add the item to cart state and trigger the cart sidebar to slide in."
+        }
+      ]
+    },
+    {
+      "id": "REQ-11",
+      "summary": "Build a persistent mini cart/bag sidebar that slides in from the right, showing item details, payment icons, subtotal, and checkout button",
+      "acceptanceCriteria": [
+        "Cart sidebar slides in from the right with a smooth animation",
+        "Cart entries show product name, material, engraving text, and price",
+        "Grayscale payment icons are visible in the cart",
+        "Subtotal is calculated and displayed correctly"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/CartSidebar.tsx",
+          "operation": "create",
+          "description": "Create a fixed-position sidebar (position: fixed; right: 0; top: 0; height: 100vh; width: 400px; z-index: 100) that slides in from the right using CSS transform or Framer Motion. Display each cart item with product name, selected material, engraving text (if any), and price. Calculate and display subtotal. At the bottom, show a row of grayscale payment method icons (same 11 as footer) and a gold 'Proceed to Checkout' button. Include a close button (X icon) in the top-right corner to slide the sidebar out."
+        },
+        {
+          "path": "frontend/src/hooks/useCart.ts",
+          "operation": "create",
+          "description": "Create a custom React hook to manage cart state using useState or useReducer. Provide functions: addItem, removeItem, clearCart, and a computed subtotal. Each cart item should include: productId, productName, selectedMaterial (name and price), engravingText, quantity. Return cart items array, subtotal, and mutation functions."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Import and render the CartSidebar component at the app root level (outside PageTransition wrapper) so it persists across route changes. Manage cart sidebar open/closed state at the App level and pass down via context or props. Ensure the cart sidebar can be triggered from any page (e.g., after adding an item in ProductDetailPage)."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,323 @@
+{
+  "kind": "coverage_report",
+  "version": "1.0",
+  "generatedAt": "2026-02-24T23:46:26.444Z",
+  "sources": {
+    "buildRequest": true,
+    "implementationPlan": true
+  },
+  "requirements": {
+    "total": 11,
+    "implemented": 10,
+    "items": [
+      {
+        "id": "REQ-1",
+        "summary": "Apply a luxury white/gold visual theme across the entire app: off-white (#FAFAF8) backgrounds, gold (#C9A84C) accents, deep charcoal (#1A1A1A) text. Load Cormorant Garamond (Google Fonts) for all headings and Montserrat for all UI labels, buttons, and body text. Apply these fonts and the color palette consistently across every page and component.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/index.css",
+          "frontend/tailwind.config.js"
+        ],
+        "matchedFiles": [
+          "frontend/src/index.css",
+          "frontend/tailwind.config.js"
+        ]
+      },
+      {
+        "id": "REQ-10",
+        "summary": "Add a '24-Hour Customization Rule' modal that appears when the user clicks 'Add to Bag' on the PDP. The modal must display the message: 'I understand that ETCHLY begins production 24 hours after my order and that customized items cannot be returned.' with a gold-styled 'I Agree & Continue' button and a plain 'Cancel' link. The item is only added to the cart state after the user clicks 'I Agree & Continue'.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/components/CustomizationRuleModal.tsx",
+          "frontend/src/components/StickyAddToBagBar.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/components/CustomizationRuleModal.tsx",
+          "frontend/src/components/StickyAddToBagBar.tsx"
+        ]
+      },
+      {
+        "id": "REQ-11",
+        "summary": "Build a persistent mini cart/bag sidebar that slides in from the right when items are added. Show item name, selected material, engraved text (if any), and price. Include a checkout summary section listing the subtotal and a row of grayscale payment method icons (same set as footer). Include a 'Proceed to Checkout' gold button.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/components/CartSidebar.tsx",
+          "frontend/src/hooks/useCart.ts",
+          "frontend/src/App.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/components/CartSidebar.tsx",
+          "frontend/src/hooks/useCart.ts",
+          "frontend/src/App.tsx"
+        ]
+      },
+      {
+        "id": "REQ-2",
+        "summary": "Implement a scroll-reveal fade-in-up animation: as the user scrolls, product cards and section blocks transition from opacity 0 + translateY(30px) to opacity 1 + translateY(0) over 0.8s ease-out. Also apply a subtle parallax effect on hero/background images so they scroll at ~70% of the foreground scroll speed. Page-level route transitions should fade to white and back in.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/hooks/useScrollReveal.ts",
+          "frontend/src/hooks/useParallax.ts",
+          "frontend/src/components/PageTransition.tsx",
+          "frontend/src/App.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/hooks/useScrollReveal.ts",
+          "frontend/src/hooks/useParallax.ts",
+          "frontend/src/App.tsx"
+        ]
+      },
+      {
+        "id": "REQ-3",
+        "summary": "Add hover-magnify and click-to-zoom on all product images. On hover, the image scales to 1.5× within its container (overflow hidden). On click, open a fullscreen lightbox showing the full-resolution image with close button.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/components/ZoomableImage.tsx",
+          "frontend/src/components/ImageLightbox.tsx",
+          "frontend/src/hooks/useLightbox.ts"
+        ],
+        "matchedFiles": [
+          "frontend/src/components/ZoomableImage.tsx",
+          "frontend/src/components/ImageLightbox.tsx",
+          "frontend/src/hooks/useLightbox.ts"
+        ]
+      },
+      {
+        "id": "REQ-4",
+        "summary": "Build the Homepage with four sections: (1) A full-viewport video hero with an autoplay looping background video (use a placeholder video element), a bold headline 'ETCHLY' in Cormorant Garamond, and a gold CTA button 'Explore Collection'. (2) A 'How It Works' section with three animated steps: Upload Photo → Laser Etching → Delivered. Each step fades in sequentially. (3) A 'Trending Collections' staggered grid showing mock product cards that animate in with a staggered delay. (4) A minimal footer with grayscale trust icons for VISA, Mastercard, Amex, Discover, JCB, Diners Club, Apple Pay, Google Pay, PayPal, Klarna, and Afterpay.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/pages/HomePage.tsx",
+          "frontend/src/components/VideoHero.tsx",
+          "frontend/src/components/HowItWorks.tsx",
+          "frontend/src/components/TrendingCollections.tsx",
+          "frontend/src/components/Footer.tsx",
+          "frontend/src/components/ProductCard.tsx",
+          "frontend/src/App.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/pages/HomePage.tsx",
+          "frontend/src/components/VideoHero.tsx",
+          "frontend/src/components/HowItWorks.tsx",
+          "frontend/src/components/TrendingCollections.tsx",
+          "frontend/src/components/Footer.tsx",
+          "frontend/src/components/ProductCard.tsx",
+          "frontend/src/App.tsx"
+        ]
+      },
+      {
+        "id": "REQ-5",
+        "summary": "Build the Product Detail Page (PDP) as a split-layout 'Customization Studio'. Left panel: zoom-enabled image gallery with thumbnail strip. Right panel: (A) Material Hub — four material buttons (18K Gold, Rose Gold, 925 Silver, Platinum) that instantly swap the displayed product image and update the displayed price when selected. (B) Photo Lab — an 'Upload Photo' button that opens a minimalist modal with a file input and a simulated face-detection crop preview (center the uploaded image in a circular crop frame). (C) Live Engraving Preview — a text input labeled 'Engrave a message'; as the user types, the text renders in a cursive jewelry-style font on a 3D-rendered disc/pendant (use React Three Fiber for the 3D render with the typed text projected as a texture). Include a sticky 'Add to Bag' bar fixed at the bottom of the viewport.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/pages/ProductDetailPage.tsx",
+          "frontend/src/components/ProductImageGallery.tsx",
+          "frontend/src/components/MaterialHub.tsx",
+          "frontend/src/components/PhotoLab.tsx",
+          "frontend/src/components/PhotoUploadModal.tsx",
+          "frontend/src/components/EngravingPreview.tsx",
+          "frontend/src/components/StickyAddToBagBar.tsx",
+          "frontend/src/App.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/pages/ProductDetailPage.tsx",
+          "frontend/src/components/ProductImageGallery.tsx",
+          "frontend/src/components/MaterialHub.tsx",
+          "frontend/src/components/PhotoLab.tsx",
+          "frontend/src/components/PhotoUploadModal.tsx",
+          "frontend/src/components/EngravingPreview.tsx",
+          "frontend/src/components/StickyAddToBagBar.tsx",
+          "frontend/src/App.tsx"
+        ]
+      },
+      {
+        "id": "REQ-6",
+        "summary": "Build the Catalog page: a clean, borderless grid of all ETCHLY product cards. Each card shows product image, name, and price. On hover, the card image swaps to an alternate angle image (use two distinct mock images per card). Apply scroll-reveal fade-in-up with staggered delays.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/pages/CatalogPage.tsx",
+          "frontend/src/App.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/pages/CatalogPage.tsx",
+          "frontend/src/App.tsx"
+        ]
+      },
+      {
+        "id": "REQ-7",
+        "summary": "Build the Artisan Story (About) page describing 'The Etchly Method'. Include: a hero banner with the headline 'Crafted by Light. Perfected by Hand.', three content sections covering (1) 2026 laser etching technology, (2) traditional hand-polishing process, and (3) a quality guarantee. Use large typographic pull-quotes in Cormorant Garamond and supporting body text in Montserrat. Apply scroll-reveal animations.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/pages/ArtisanStoryPage.tsx",
+          "frontend/src/App.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/pages/ArtisanStoryPage.tsx",
+          "frontend/src/App.tsx"
+        ]
+      },
+      {
+        "id": "REQ-8",
+        "summary": "Build the Order Concierge (tracking) page: a user portal where visitors can enter an order number to see its status. Display a visual three-stage progress tracker: 'Designing → Etching → Shipped' with the active stage highlighted in gold. Persist mock order data in the backend so querying by order number returns a stage value.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/pages/OrderConciergePage.tsx",
+          "frontend/src/components/OrderStatusTracker.tsx",
+          "frontend/src/App.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/pages/OrderConciergePage.tsx",
+          "frontend/src/components/OrderStatusTracker.tsx",
+          "frontend/src/App.tsx"
+        ]
+      },
+      {
+        "id": "REQ-9",
+        "summary": "Implement the backend data model in the Motoko actor to support: (1) A Product type with fields: id, name, materials (array of material options each with label, priceUSD, imageKey), and description. Pre-populate with at least 4 ETCHLY products. (2) An Order type with fields: id, status (variant: #Designing | #Etching | #Shipped), createdAt. Pre-populate with 3 mock orders at different stages. Expose query functions: getProducts() and getOrderStatus(orderId: Text).",
+        "status": "unknown",
+        "plannedFiles": [],
+        "matchedFiles": []
+      }
+    ]
+  },
+  "changedFiles": [
+    "backend/blob-storage/Mixin.mo",
+    "backend/blob-storage/Storage.mo",
+    "backend/main.mo",
+    "build-request.json",
+    "build-template/Dockerfile",
+    "build-template/LICENSE",
+    "build-template/README.md",
+    "build-template/deploy.sh",
+    "build-template/icp.yaml",
+    "build-template/package.json",
+    "build-template/pnpm-lock.yaml",
+    "build-template/pnpm-workspace.yaml",
+    "build-template/scripts/prune-unused-images.js",
+    "build-template/scripts/resize-images.js",
+    "build-template/src/backend/canister.yaml",
+    "build-template/src/backend/system-idl/aaaaa-aa.did",
+    "build-template/src/frontend/canister.yaml",
+    "build-template/src/frontend/components.json",
+    "build-template/src/frontend/env.json",
+    "build-template/src/frontend/eslint-rules/no-bigint-in-query-keys.js",
+    "build-template/src/frontend/eslint-rules/require-internet-identity-provider.js",
+    "build-template/src/frontend/eslint.config.js",
+    "build-template/src/frontend/package.json",
+    "build-template/src/frontend/postcss.config.js",
+    "build-template/src/frontend/src/components/ui/accordion.tsx",
+    "build-template/src/frontend/src/components/ui/alert-dialog.tsx",
+    "build-template/src/frontend/src/components/ui/alert.tsx",
+    "build-template/src/frontend/src/components/ui/aspect-ratio.tsx",
+    "build-template/src/frontend/src/components/ui/avatar.tsx",
+    "build-template/src/frontend/src/components/ui/badge.tsx",
+    "build-template/src/frontend/src/components/ui/breadcrumb.tsx",
+    "build-template/src/frontend/src/components/ui/button.tsx",
+    "build-template/src/frontend/src/components/ui/calendar.tsx",
+    "build-template/src/frontend/src/components/ui/card.tsx",
+    "build-template/src/frontend/src/components/ui/carousel.tsx",
+    "build-template/src/frontend/src/components/ui/chart.tsx",
+    "build-template/src/frontend/src/components/ui/checkbox.tsx",
+    "build-template/src/frontend/src/components/ui/collapsible.tsx",
+    "build-template/src/frontend/src/components/ui/command.tsx",
+    "build-template/src/frontend/src/components/ui/context-menu.tsx",
+    "build-template/src/frontend/src/components/ui/dialog.tsx",
+    "build-template/src/frontend/src/components/ui/drawer.tsx",
+    "build-template/src/frontend/src/components/ui/dropdown-menu.tsx",
+    "build-template/src/frontend/src/components/ui/form.tsx",
+    "build-template/src/frontend/src/components/ui/hover-card.tsx",
+    "build-template/src/frontend/src/components/ui/input-otp.tsx",
+    "build-template/src/frontend/src/components/ui/input.tsx",
+    "build-template/src/frontend/src/components/ui/label.tsx",
+    "build-template/src/frontend/src/components/ui/menubar.tsx",
+    "build-template/src/frontend/src/components/ui/navigation-menu.tsx",
+    "build-template/src/frontend/src/components/ui/pagination.tsx",
+    "build-template/src/frontend/src/components/ui/popover.tsx",
+    "build-template/src/frontend/src/components/ui/progress.tsx",
+    "build-template/src/frontend/src/components/ui/radio-group.tsx",
+    "build-template/src/frontend/src/components/ui/resizable.tsx",
+    "build-template/src/frontend/src/components/ui/scroll-area.tsx",
+    "build-template/src/frontend/src/components/ui/select.tsx",
+    "build-template/src/frontend/src/components/ui/separator.tsx",
+    "build-template/src/frontend/src/components/ui/sheet.tsx",
+    "build-template/src/frontend/src/components/ui/sidebar.tsx",
+    "build-template/src/frontend/src/components/ui/skeleton.tsx",
+    "build-template/src/frontend/src/components/ui/slider.tsx",
+    "build-template/src/frontend/src/components/ui/sonner.tsx",
+    "build-template/src/frontend/src/components/ui/switch.tsx",
+    "build-template/src/frontend/src/components/ui/table.tsx",
+    "build-template/src/frontend/src/components/ui/tabs.tsx",
+    "build-template/src/frontend/src/components/ui/textarea.tsx",
+    "build-template/src/frontend/src/components/ui/toggle-group.tsx",
+    "build-template/src/frontend/src/components/ui/toggle.tsx",
+    "build-template/src/frontend/src/components/ui/tooltip.tsx",
+    "build-template/src/frontend/src/hooks/use-mobile.tsx",
+    "build-template/src/frontend/src/lib/utils.ts",
+    "build-template/src/frontend/tsconfig.json",
+    "build-template/src/frontend/vite.config.js",
+    "build-template/tsconfig.json",
+    "caffeine.lock.json",
+    "feature_evidence.json",
+    "frontend-file-summaries.txt",
+    "frontend-implementation-plan.json",
+    "frontend/index.css",
+    "frontend/index.html",
+    "frontend/public/assets/generated/artisan-story-hero.dim_1600x900.png",
+    "frontend/public/assets/generated/etchly-logo.dim_400x120.png",
+    "frontend/public/assets/generated/hero-banner.dim_1920x1080.png",
+    "frontend/public/assets/generated/laser-detail-texture.dim_800x600.png",
+    "frontend/public/assets/generated/product-gold-medallion-alt.dim_800x800.png",
+    "frontend/public/assets/generated/product-gold-medallion.dim_800x800.png",
+    "frontend/public/assets/generated/product-platinum-medallion-alt.dim_800x800.png",
+    "frontend/public/assets/generated/product-platinum-medallion.dim_800x800.png",
+    "frontend/public/assets/generated/product-rose-gold-pendant-alt.dim_800x800.png",
+    "frontend/public/assets/generated/product-rose-gold-pendant.dim_800x800.png",
+    "frontend/public/assets/generated/product-silver-disc-alt.dim_800x800.png",
+    "frontend/public/assets/generated/product-silver-disc.dim_800x800.png",
+    "frontend/src/App.tsx",
+    "frontend/src/backend.d.ts",
+    "frontend/src/backend.ts",
+    "frontend/src/components/CartSidebar.tsx",
+    "frontend/src/components/CustomizationRuleModal.tsx",
+    "frontend/src/components/EngravingPreview.tsx",
+    "frontend/src/components/Footer.tsx",
+    "frontend/src/components/Header.tsx",
+    "frontend/src/components/HowItWorks.tsx",
+    "frontend/src/components/ImageLightbox.tsx",
+    "frontend/src/components/MaterialHub.tsx",
+    "frontend/src/components/OrderStatusTracker.tsx",
+    "frontend/src/components/PaymentIcons.tsx",
+    "frontend/src/components/PhotoLab.tsx",
+    "frontend/src/components/PhotoUploadModal.tsx",
+    "frontend/src/components/ProductCard.tsx",
+    "frontend/src/components/ProductImageGallery.tsx",
+    "frontend/src/components/StickyAddToBagBar.tsx",
+    "frontend/src/components/TrendingCollections.tsx",
+    "frontend/src/components/VideoHero.tsx",
+    "frontend/src/components/ZoomableImage.tsx",
+    "frontend/src/config.ts",
+    "frontend/src/declarations/backend.did.d.ts",
+    "frontend/src/declarations/backend.did.js",
+    "frontend/src/hooks/useActor.ts",
+    "frontend/src/hooks/useCart.ts",
+    "frontend/src/hooks/useInternetIdentity.ts",
+    "frontend/src/hooks/useLightbox.ts",
+    "frontend/src/hooks/useParallax.ts",
+    "frontend/src/hooks/useQueries.ts",
+    "frontend/src/hooks/useScrollReveal.ts",
+    "frontend/src/index.css",
+    "frontend/src/main.tsx",
+    "frontend/src/pages/ArtisanStoryPage.tsx",
+    "frontend/src/pages/CatalogPage.tsx",
+    "frontend/src/pages/HomePage.tsx",
+    "frontend/src/pages/OrderConciergePage.tsx",
+    "frontend/src/pages/ProductDetailPage.tsx",
+    "frontend/src/ui-summary.json",
+    "frontend/src/utils/StorageClient.ts",
+    "frontend/tailwind.config.js",
+    "project_state.json",
+    "scratch/component-selection.json",
+    "spec.md",
+    "spec_vs_diff_report.json"
+  ]
+}

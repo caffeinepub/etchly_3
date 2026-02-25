@@ -1,0 +1,130 @@
+{
+  "kind": "spec_vs_diff_report",
+  "version": "1.0",
+  "generatedAt": "2026-02-24T23:46:26.440Z",
+  "summary": "The diff implements most of the required features for the ETCHLY storefront. The backend Motoko actor, frontend pages, components, and UI elements are all present. However, several specific requirements have gaps or are only partially implemented, and a few hallucinated features were added.",
+  "missing_requirements": [
+    {
+      "id": "REQ-2",
+      "requirement": "Page-level route transitions should fade to white and back in when navigating between pages.",
+      "reason": "No page transition wrapper or fade-to-white animation logic is visible in App.tsx or any route wrapper. The router uses TanStack Router with a plain Outlet and no transition animation layer.",
+      "evidence": [
+        "frontend/src/App.tsx"
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "requirement": "Parallax effect on hero/background images so they scroll at ~70% of the foreground scroll speed.",
+      "reason": "No parallax scroll logic is present in VideoHero.tsx or any other component in the diff.",
+      "evidence": [
+        "frontend/src/components/VideoHero.tsx"
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "requirement": "Lightbox must be dismissible via Escape key.",
+      "reason": "ImageLightbox.tsx does not add a keydown event listener for the Escape key. Only click-based close is implemented.",
+      "evidence": [
+        "frontend/src/components/ImageLightbox.tsx"
+      ]
+    },
+    {
+      "id": "REQ-9",
+      "requirement": "Product Material field must be named 'label' per spec, and Order status variant must be #Designing | #Etching | #Shipped (capitalized).",
+      "reason": "In backend/main.mo, the Material type uses 'title' instead of 'label', and the OrderStatus variant uses lowercase #designing/#etching/#shipped instead of the specified capitalized variants.",
+      "evidence": [
+        "backend/main.mo"
+      ]
+    },
+    {
+      "id": "REQ-9",
+      "requirement": "getOrderStatus() should return an error or null for an unknown order ID.",
+      "reason": "The implementation calls Runtime.trap('Order not found') for unknown orders, which is a fatal trap rather than returning a null or optional error type as described in the acceptance criteria.",
+      "evidence": [
+        "backend/main.mo"
+      ]
+    },
+    {
+      "id": "REQ-9",
+      "requirement": "Pre-populated products must be ETCHLY jewelry items with 18K Gold, Rose Gold, 925 Silver, and Platinum material options.",
+      "reason": "The backend pre-populates with non-jewelry products (Custom Cutting Board, Engraved Whiskey Glass Set, Personalized Cheese Board, Custom Coaster Set) with non-jewelry materials (Walnut, Hard Maple, Bamboo, etc.) instead of the specified ETCHLY jewelry products.",
+      "evidence": [
+        "backend/main.mo"
+      ]
+    },
+    {
+      "id": "REQ-5",
+      "requirement": "Live Engraving Preview text input must be labeled 'Engrave a message'.",
+      "reason": "EngravingPreview.tsx uses 'Engrave a message...' only as placeholder text on the input, not as a visible label element as specified.",
+      "evidence": [
+        "frontend/src/components/EngravingPreview.tsx"
+      ]
+    }
+  ],
+  "hallucinated_features": [
+    {
+      "description": "getAllOrders() and getOrderDetails() query functions added to the Motoko backend.",
+      "reason": "The build request only specifies getProducts() and getOrderStatus(orderId) as query functions. These additional functions were not requested.",
+      "evidence": [
+        "backend/main.mo"
+      ]
+    },
+    {
+      "description": "MATERIAL_COLORS map in MaterialHub includes non-jewelry materials such as Walnut, Hard Maple, Lowball Glass, Highball Glass, Bamboo, Marble, Slate, and Cork.",
+      "reason": "These correspond to the hallucinated non-jewelry backend products, not the requested ETCHLY jewelry materials.",
+      "evidence": [
+        "frontend/src/components/MaterialHub.tsx"
+      ]
+    },
+    {
+      "description": "caffeine.ai attribution link added to the Footer.",
+      "reason": "No such attribution was requested in the build specification.",
+      "evidence": [
+        "frontend/src/components/Footer.tsx"
+      ]
+    }
+  ],
+  "confidence": 0.72,
+  "changed_files": [
+    "all_files_summary.json",
+    "backend/main.mo",
+    "frontend-file-summaries.txt",
+    "frontend/index.css",
+    "frontend/index.html",
+    "frontend/src/App.tsx",
+    "frontend/src/components/CartSidebar.tsx",
+    "frontend/src/components/CustomizationRuleModal.tsx",
+    "frontend/src/components/EngravingPreview.tsx",
+    "frontend/src/components/Footer.tsx",
+    "frontend/src/components/Header.tsx",
+    "frontend/src/components/HowItWorks.tsx",
+    "frontend/src/components/ImageLightbox.tsx",
+    "frontend/src/components/MaterialHub.tsx",
+    "frontend/src/components/OrderStatusTracker.tsx",
+    "frontend/src/components/PaymentIcons.tsx",
+    "frontend/src/components/PhotoLab.tsx",
+    "frontend/src/components/PhotoUploadModal.tsx",
+    "frontend/src/components/ProductCard.tsx",
+    "frontend/src/components/ProductImageGallery.tsx",
+    "frontend/src/components/StickyAddToBagBar.tsx",
+    "frontend/src/components/TrendingCollections.tsx",
+    "frontend/src/components/VideoHero.tsx",
+    "frontend/src/components/ZoomableImage.tsx",
+    "frontend/src/hooks/useActor.ts",
+    "frontend/src/hooks/useCart.ts",
+    "frontend/src/hooks/useInternetIdentity.ts",
+    "frontend/src/hooks/useLightbox.ts",
+    "frontend/src/hooks/useParallax.ts",
+    "frontend/src/hooks/useQueries.ts",
+    "frontend/src/hooks/useScrollReveal.ts",
+    "frontend/src/index.css",
+    "frontend/src/main.tsx",
+    "frontend/src/pages/ArtisanStoryPage.tsx",
+    "frontend/src/pages/CatalogPage.tsx",
+    "frontend/src/pages/HomePage.tsx",
+    "frontend/src/pages/OrderConciergePage.tsx",
+    "frontend/src/pages/ProductDetailPage.tsx",
+    "frontend/tailwind.config.js",
+    "project_state.json"
+  ]
+}

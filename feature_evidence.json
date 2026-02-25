@@ -1,0 +1,220 @@
+{
+  "kind": "feature_evidence_report",
+  "features": [
+    {
+      "featureId": "feature-apply-a-luxury-white-gold-visual-theme-across-the-entire-app-off-white-fafaf8-backgrounds-gold-c9a84c-accents-deep-charcoal-1a1a1a-text-load-cormorant-garamond-google-fonts-for-all-headings-and-montserrat-for-all-ui-labels-buttons-and-body-text-apply-these-fonts-and-the-color-palette-consistently-across-every-page-and-component",
+      "featureTitle": "Apply a luxury white/gold visual theme across the entire app: off-white (#FAFAF8) backgrounds, gold (#C9A84C) accents, deep charcoal (#1A1A1A) text. Load Cormorant Garamond (Google Fonts) for all headings and Montserrat for all UI labels, buttons, and body text. Apply these fonts and the color palette consistently across every page and component.",
+      "files": [
+        "frontend/src/index.css",
+        "frontend/tailwind.config.js"
+      ],
+      "components": [
+        "blob-storage@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-1"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-implement-a-scroll-reveal-fade-in-up-animation-as-the-user-scrolls-product-cards-and-section-blocks-transition-from-opacity-0-translatey-30px-to-opacity-1-translatey-0-over-0-8s-ease-out-also-apply-a-subtle-parallax-effect-on-hero-background-images-so-they-scroll-at-70-of-the-foreground-scroll-speed-page-level-route-transitions-should-fade-to-white-and-back-in",
+      "featureTitle": "Implement a scroll-reveal fade-in-up animation: as the user scrolls, product cards and section blocks transition from opacity 0 + translateY(30px) to opacity 1 + translateY(0) over 0.8s ease-out. Also apply a subtle parallax effect on hero/background images so they scroll at ~70% of the foreground scroll speed. Page-level route transitions should fade to white and back in.",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/hooks/useParallax.ts",
+        "frontend/src/hooks/useScrollReveal.ts"
+      ],
+      "components": [
+        "blob-storage@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-2"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-add-hover-magnify-and-click-to-zoom-on-all-product-images-on-hover-the-image-scales-to-1-5-within-its-container-overflow-hidden-on-click-open-a-fullscreen-lightbox-showing-the-full-resolution-image-with-close-button",
+      "featureTitle": "Add hover-magnify and click-to-zoom on all product images. On hover, the image scales to 1.5× within its container (overflow hidden). On click, open a fullscreen lightbox showing the full-resolution image with close button.",
+      "files": [
+        "frontend/src/components/ImageLightbox.tsx",
+        "frontend/src/components/ZoomableImage.tsx",
+        "frontend/src/hooks/useLightbox.ts"
+      ],
+      "components": [
+        "blob-storage@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-3"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-build-the-homepage-with-four-sections-1-a-full-viewport-video-hero-with-an-autoplay-looping-background-video-use-a-placeholder-video-element-a-bold-headline-etchly-in-cormorant-garamond-and-a-gold-cta-button-explore-collection-2-a-how-it-works-section-with-three-animated-steps-upload-photo-laser-etching-delivered-each-step-fades-in-sequentially-3-a-trending-collections-staggered-grid-showing-mock-product-cards-that-animate-in-with-a-staggered-delay-4-a-minimal-footer-with-grayscale-trust-icons-for-visa-mastercard-amex-discover-jcb-diners-club-apple-pay-google-pay-paypal-klarna-and-afterpay",
+      "featureTitle": "Build the Homepage with four sections: (1) A full-viewport video hero with an autoplay looping background video (use a placeholder video element), a bold headline 'ETCHLY' in Cormorant Garamond, and a gold CTA button 'Explore Collection'. (2) A 'How It Works' section with three animated steps: Upload Photo → Laser Etching → Delivered. Each step fades in sequentially. (3) A 'Trending Collections' staggered grid showing mock product cards that animate in with a staggered delay. (4) A minimal footer with grayscale trust icons for VISA, Mastercard, Amex, Discover, JCB, Diners Club, Apple Pay, Google Pay, PayPal, Klarna, and Afterpay.",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/components/Footer.tsx",
+        "frontend/src/components/HowItWorks.tsx",
+        "frontend/src/components/ProductCard.tsx",
+        "frontend/src/components/TrendingCollections.tsx",
+        "frontend/src/components/VideoHero.tsx",
+        "frontend/src/pages/HomePage.tsx"
+      ],
+      "components": [
+        "blob-storage@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-4"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-build-the-product-detail-page-pdp-as-a-split-layout-customization-studio-left-panel-zoom-enabled-image-gallery-with-thumbnail-strip-right-panel-a-material-hub-four-material-buttons-18k-gold-rose-gold-925-silver-platinum-that-instantly-swap-the-displayed-product-image-and-update-the-displayed-price-when-selected-b-photo-lab-an-upload-photo-button-that-opens-a-minimalist-modal-with-a-file-input-and-a-simulated-face-detection-crop-preview-center-the-uploaded-image-in-a-circular-crop-frame-c-live-engraving-preview-a-text-input-labeled-engrave-a-message-as-the-user-types-the-text-renders-in-a-cursive-jewelry-style-font-on-a-3d-rendered-disc-pendant-use-react-three-fiber-for-the-3d-render-with-the-typed-text-projected-as-a-texture-include-a-sticky-add-to-bag-bar-fixed-at-the-bottom-of-the-viewport",
+      "featureTitle": "Build the Product Detail Page (PDP) as a split-layout 'Customization Studio'. Left panel: zoom-enabled image gallery with thumbnail strip. Right panel: (A) Material Hub — four material buttons (18K Gold, Rose Gold, 925 Silver, Platinum) that instantly swap the displayed product image and update the displayed price when selected. (B) Photo Lab — an 'Upload Photo' button that opens a minimalist modal with a file input and a simulated face-detection crop preview (center the uploaded image in a circular crop frame). (C) Live Engraving Preview — a text input labeled 'Engrave a message'; as the user types, the text renders in a cursive jewelry-style font on a 3D-rendered disc/pendant (use React Three Fiber for the 3D render with the typed text projected as a texture). Include a sticky 'Add to Bag' bar fixed at the bottom of the viewport.",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/components/EngravingPreview.tsx",
+        "frontend/src/components/MaterialHub.tsx",
+        "frontend/src/components/PhotoLab.tsx",
+        "frontend/src/components/PhotoUploadModal.tsx",
+        "frontend/src/components/ProductImageGallery.tsx",
+        "frontend/src/components/StickyAddToBagBar.tsx",
+        "frontend/src/pages/ProductDetailPage.tsx"
+      ],
+      "components": [
+        "blob-storage@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-5"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-build-the-catalog-page-a-clean-borderless-grid-of-all-etchly-product-cards-each-card-shows-product-image-name-and-price-on-hover-the-card-image-swaps-to-an-alternate-angle-image-use-two-distinct-mock-images-per-card-apply-scroll-reveal-fade-in-up-with-staggered-delays",
+      "featureTitle": "Build the Catalog page: a clean, borderless grid of all ETCHLY product cards. Each card shows product image, name, and price. On hover, the card image swaps to an alternate angle image (use two distinct mock images per card). Apply scroll-reveal fade-in-up with staggered delays.",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/pages/CatalogPage.tsx"
+      ],
+      "components": [
+        "blob-storage@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-6"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-build-the-artisan-story-about-page-describing-the-etchly-method-include-a-hero-banner-with-the-headline-crafted-by-light-perfected-by-hand-three-content-sections-covering-1-2026-laser-etching-technology-2-traditional-hand-polishing-process-and-3-a-quality-guarantee-use-large-typographic-pull-quotes-in-cormorant-garamond-and-supporting-body-text-in-montserrat-apply-scroll-reveal-animations",
+      "featureTitle": "Build the Artisan Story (About) page describing 'The Etchly Method'. Include: a hero banner with the headline 'Crafted by Light. Perfected by Hand.', three content sections covering (1) 2026 laser etching technology, (2) traditional hand-polishing process, and (3) a quality guarantee. Use large typographic pull-quotes in Cormorant Garamond and supporting body text in Montserrat. Apply scroll-reveal animations.",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/pages/ArtisanStoryPage.tsx"
+      ],
+      "components": [
+        "blob-storage@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-7"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-build-the-order-concierge-tracking-page-a-user-portal-where-visitors-can-enter-an-order-number-to-see-its-status-display-a-visual-three-stage-progress-tracker-designing-etching-shipped-with-the-active-stage-highlighted-in-gold-persist-mock-order-data-in-the-backend-so-querying-by-order-number-returns-a-stage-value",
+      "featureTitle": "Build the Order Concierge (tracking) page: a user portal where visitors can enter an order number to see its status. Display a visual three-stage progress tracker: 'Designing → Etching → Shipped' with the active stage highlighted in gold. Persist mock order data in the backend so querying by order number returns a stage value.",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/components/OrderStatusTracker.tsx",
+        "frontend/src/pages/OrderConciergePage.tsx"
+      ],
+      "components": [
+        "blob-storage@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-8"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-add-a-24-hour-customization-rule-modal-that-appears-when-the-user-clicks-add-to-bag-on-the-pdp-the-modal-must-display-the-message-i-understand-that-etchly-begins-production-24-hours-after-my-order-and-that-customized-items-cannot-be-returned-with-a-gold-styled-i-agree-continue-button-and-a-plain-cancel-link-the-item-is-only-added-to-the-cart-state-after-the-user-clicks-i-agree-continue",
+      "featureTitle": "Add a '24-Hour Customization Rule' modal that appears when the user clicks 'Add to Bag' on the PDP. The modal must display the message: 'I understand that ETCHLY begins production 24 hours after my order and that customized items cannot be returned.' with a gold-styled 'I Agree & Continue' button and a plain 'Cancel' link. The item is only added to the cart state after the user clicks 'I Agree & Continue'.",
+      "files": [
+        "frontend/src/components/CustomizationRuleModal.tsx",
+        "frontend/src/components/StickyAddToBagBar.tsx"
+      ],
+      "components": [
+        "blob-storage@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-10"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-build-a-persistent-mini-cart-bag-sidebar-that-slides-in-from-the-right-when-items-are-added-show-item-name-selected-material-engraved-text-if-any-and-price-include-a-checkout-summary-section-listing-the-subtotal-and-a-row-of-grayscale-payment-method-icons-same-set-as-footer-include-a-proceed-to-checkout-gold-button",
+      "featureTitle": "Build a persistent mini cart/bag sidebar that slides in from the right when items are added. Show item name, selected material, engraved text (if any), and price. Include a checkout summary section listing the subtotal and a row of grayscale payment method icons (same set as footer). Include a 'Proceed to Checkout' gold button.",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/components/CartSidebar.tsx",
+        "frontend/src/hooks/useCart.ts"
+      ],
+      "components": [
+        "blob-storage@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-11"
+      ],
+      "confidence": "high"
+    }
+  ]
+}
